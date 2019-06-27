@@ -1,13 +1,3 @@
-function changeBackGround(color) {
-   document.body.style.backgroundColor = color; 
-}
-window.onload = function() {
-  changeBackGround('red');
-  setTimeout(function() {
-    changeBackGround('blue');
-  }, 1000);
-}
-
 var size = 4; // this value is changeable by the user 
 var click = 0; 
 //--------------------------------
@@ -73,7 +63,7 @@ function  showImg(element)
     element.src = miniSources[element.id];
      setTimeout(function() {
     checkImg(element);
-  }, 500);
+  }, 200);
 }
 function checkImg(element)
 {
