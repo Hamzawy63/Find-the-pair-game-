@@ -71,8 +71,12 @@ select
 
 .button input:hover {
   background-color: white;
-  color: green;
+  color: #2ecc71;
+    
 }
 
 
-.button input:focus{font-size:20px;}
+.button input:focus{
+    font-size:20px;
+    font-size : bold;
+}

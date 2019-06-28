@@ -55,7 +55,7 @@ this project is done 28th june by mahmoud manfy(id : 61 ) & Hamza hassan (id : 2
 			<div class="cotainer">
 				<div class = "theSize">
 					<label >Size:</label>
-					 <select id="selectBox" onchange="changeFunc();">
+					 <select id='selectBox' onchange="changeFunc();">
 						<option disabled selected>Select size</option>
 						<option  value = "4">Small</option>
 						<option value = "6">Medium</option>
@@ -63,9 +63,9 @@ this project is done 28th june by mahmoud manfy(id : 61 ) & Hamza hassan (id : 2
 					</select>
 				</div>
 				<div class = "button">
-					<input type="button" value="Start" onclick = "begin()">
-					<input type="reset" value="reset">
-					<input type="button" value="Solve" >
+					<input type="button" value="Start" onclick = "begin(this)" id = 'counterBtn'>
+				<!--	<input type="reset" value="reset">
+					<input type="button" value="Solve" >-->
 				</div>
 				<div class = "counter">
 				<!--here will be the time-->                   
