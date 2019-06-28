@@ -167,3 +167,15 @@ function removeElement(elementId) {
     element.parentNode.removeChild(element);
 }
 removeElement("")
+
+
+function userQuit()
+{
+    var tds = document.querySelectorAll("TD");
+    for(var k = 0;k<tds.length ;k++ )
+        {
+            var img = tds[k].firstChild; // the image
+            img.src = miniSources[img.id]
+        }
+    
+}
