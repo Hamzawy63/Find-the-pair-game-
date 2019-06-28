@@ -1,5 +1,6 @@
-var size = 8; // this value is changeable by the user 
-var click = 0; 
+var size = 4; // this value is changeable by the user 
+var click = 0;
+var isStartButtonClicked = false; //to assure that start button is clicked before the user play
 //--------------------------------
 function addTable(n1,n2) { // n1 is always equal  n2 but we make the function more general    
   var counter = 0 ; 
@@ -62,6 +63,11 @@ shuffle(miniSources);
 //shuffle(sources); // to make the shuffle to the sources array 
 function  showImg(element)
 {
+    if(!isStartButtonClicked)
+        {
+            alert("You have to press start button first ");
+            return;
+        }
     element.src = miniSources[element.id];
      setTimeout(function() {
     checkImg(element);
@@ -115,11 +121,6 @@ function shuffle(array) { // create random shuffling
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
-
-
-
-
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -138,6 +139,7 @@ function incrementSeconds() {
     el.innerText = "You have been here for " + seconds + " seconds.";
 }
 function begin(element){
+    isStartButtonClicked = true;
 var cancel = setInterval(incrementSeconds, 1000);
     removeElement(element.id);
     
@@ -173,6 +175,7 @@ function userQuit()
 {
     if(confirm("Are you sure you want to uncover the cards ??"))
     {
+        isStartButtonClicked =true;
     var tds = document.querySelectorAll("TD");
     for(var k = 0;k<tds.length ;k++ )
         {
