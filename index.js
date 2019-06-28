@@ -147,7 +147,15 @@ function changeFunc() {
     var selectBox = document.getElementById("selectBox");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     removeElement("tableOfGame");
-    shuffle(miniSources);
+    miniSources = [];
+    for(var k = 0 ;k<((selectedValue*selectedValue));k++ )
+    {
+        
+        //alert(miniSources.length);
+        miniSources[k] = sources[k%((selectedValue*selectedValue)/2)];
+        //alert(miniSources.length);
+    }    
+    shuffle(miniSources);    
     addTable(selectedValue,selectedValue)
    }
 
