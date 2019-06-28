@@ -1,10 +1,12 @@
-var size = 4; // this value is changeable by the user 
+var size = 8; // this value is changeable by the user 
 var click = 0; 
 //--------------------------------
 function addTable(n1,n2) { // n1 is always equal  n2 but we make the function more general    
   var counter = 0 ; 
   var myTableDiv = document.getElementById("puzzle");
   var table = document.createElement('TABLE');
+    table.setAttribute("id","tableOfGame");
+
   
 
   var tableBody = document.createElement('TBODY');
@@ -128,9 +130,29 @@ function sleep(milliseconds) {
 } 
 
 
+var seconds = 0;
+var el = document.getElementById('seconds-counter');
+
+function incrementSeconds() {
+    seconds += 1;
+    el.innerText = "You have been here for " + seconds + " seconds.";
+}
+function begin(){
+var cancel = setInterval(incrementSeconds, 1000);
+}
+
+function changeFunc() {
+    var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    removeElement("tableOfGame");
+    shuffle(miniSources);
+    addTable(selectedValue,selectedValue)
+   }
 
 
-
-
-
-
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    
+    element.parentNode.removeChild(element);
+}

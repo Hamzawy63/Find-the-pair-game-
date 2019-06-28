@@ -1,9 +1,19 @@
 <!DOCTYPE html>
+<!--
+this project is done 28th june by mahmoud manfy(id : 61 ) & Hamza hassan (id : 26)
+-->
 <html>
     <head>
-        <style src = "main.css" >
+		<title>Find the pair</title>
+		<meta charset = "utf-8">
+		<meta name="description" content="Find the Pair is a challenging concentration memory game 
+		that requires players to spot the identical pairs in each level. Match pairs of shapes 
+		together with the help of your memory.">
+		<link rel="stylesheet" href="main.css">
+        <style>
             table {
-                border: 2px red dashed;
+                border: 10px green groove;
+				margin:1%;
             }
             table tr {
                
@@ -26,19 +36,49 @@
     
     
     <body>
-    <div class  = "container"> 
-    <header></header>
-    <section class = "game">
+		<div class  = "container"> 
+		<header>
+			<h1 class="title">P<span>uzzle</span> G<span>ame</span></h1>
+			<div class="descriptionOfGame">
+			Find the Pair is a challenging concentration memory game 
+			that requires players to spot the identical pairs in each level. Match pairs of shapes 
+			together with the help of your memory.
+			It is a game which aims finding all matching pairs of pictures. At start all pictures 
+			are face down, click the boxes to uncover them if the last pictures don't match, 
+			the will again turn face down, repeat till you uncover all the pairs.
+			</div>
+		</header>
+		<section class = "game">
         <section id = "puzzle">
         </section>
-        <div class = "button"></div>
-        <div class = "counter"></div>
-        <div class = "theSize"></div>
-    </section>
-    <footer></footer>
-    </div>
-    <script src = "index.js">
-    </script>
+			<div class="forhelp">
+			<div class="cotainer">
+				<div class = "theSize">
+					<label >Size:</label>
+					 <select id="selectBox" onchange="changeFunc();">
+						<option disabled selected>Select size</option>
+						<option  value = "4">Small</option>
+						<option value = "6">Medium</option>
+						<option  value = "8">Large</option>
+					</select>
+				</div>
+				<div class = "button">
+					<input type="button" value="Start" onclick = "begin()">
+					<input type="reset" value="reset">
+					<input type="button" value="Solve" >
+				</div>
+				<div class = "counter">
+				<!--here will be the time-->                   
+                        <div id='seconds-counter' style = "color:white"> </div>
+                    
+				</div >
+			</div>
+			</div>
+		</section>
+		<footer></footer>
+		</div>
+		<script src = "index.js">
+		</script>
    
     </body>
 </html>

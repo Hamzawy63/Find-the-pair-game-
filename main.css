@@ -1,0 +1,78 @@
+.container
+{
+	width:80%;
+	margin:auto;
+	background-color:white;
+	height:auto;
+}
+body
+{
+	margin:0;
+	background:url('10.jpg');
+	font-family:Arial, Helvetica, sans-serif;
+}
+header 
+{
+	margin:0;
+	background-color:#252F31;
+	height:160px;
+    overflow: hidden; /*hamza edit 28/6*/
+}
+header .title
+{
+	font-weight:bold;
+	margin:0;
+	color:white;
+	text-align:center;
+}
+header .title span
+{
+	color:#2ecc71;
+}
+.descriptionOfGame
+{
+	font-size:20px;
+	color:white;
+	margin:5px;
+     
+}
+.forhelp
+{
+	background-color:#252F31;
+	height:100px;
+	padding:10px;
+}
+label
+{
+	color:white;
+	margin-top:20px;
+	font-size:30px;
+}
+select
+{
+	width:100%;
+}
+.theSize
+{
+	float:right;
+}
+.button input
+{
+	background-color:#2ecc71;
+	border-radius:28px;
+	border-color:#2ecc71;
+	border:1px;
+	color:white;
+	font-size:17px;
+	padding:16px 31px;
+    cursor:pointer;
+	margin-left:20px;
+}
+
+.button input:hover {
+  background-color: white;
+  color: green;
+}
+
+
+.button input:focus{font-size:20px;}
