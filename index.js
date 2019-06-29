@@ -1,6 +1,7 @@
 var size = 4; // this value is changeable by the user 
 var click = 0;
 var isStartButtonClicked = false; //to assure that start button is clicked before the user play
+var sizeIsSelected = false; // to assure that user can not change the size within the game 
 //--------------------------------
 function addTable(n1,n2) { // n1 is always equal  n2 but we make the function more general    
   var counter = 0 ; 
@@ -22,7 +23,7 @@ function addTable(n1,n2) { // n1 is always equal  n2 but we make the function mo
         var img = document.createElement('IMG');
         
         var att = document.createAttribute('src');
-        att.value = "https://via.placeholder.com/80";
+        att.value = "cover.jpg";
         
         var attr2 = document.createAttribute('onclick');
         attr2.value = "showImg(this)";
@@ -106,7 +107,7 @@ function checkImg(element)
                 var image = alltds[l].firstChild;
                  if(image.dataset.matched == "false")
                      {
-                         image.src = "https://via.placeholder.com/80/" ;
+                         image.src = "cover.jpg" ;
                      }
              }            
         }
@@ -139,16 +140,39 @@ function incrementSeconds() {
     el.innerText = "You have been here for " + seconds + " seconds.";
 }
 function begin(element){
+    var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    if(selectedValue!=4&&selectedValue!=6&&selectedValue!=8)
+        {
+            alert("You have to select the size");
+            return;
+        }
+    //first we uncover all pictures for a while
+    unCoverAllImgs();
+    setTimeout(function() {
+    coverAllImgs();
+  }, 600);
+    
+    
     isStartButtonClicked = true;
+    
 var cancel = setInterval(incrementSeconds, 1000);
     removeElement(element.id);
+    document.getElementById("solveBtn").style.display = "inline-block";
     
 }
 
 function changeFunc() {
+    if(sizeIsSelected == true)
+        {
+            alert("Size can not be changed during the game ");
+            return;
+        }
+    sizeIsSelected  = true;
     var selectBox = document.getElementById("selectBox");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     removeElement("tableOfGame");
+    //removeElement("selectBox");
     miniSources = [];
     for(var k = 0 ;k<((selectedValue*selectedValue));k++ )
     {
@@ -168,20 +192,37 @@ function removeElement(elementId) {
     
     element.parentNode.removeChild(element);
 }
-removeElement("")
+//removeElement("")
 
 
 function userQuit()
 {
-    if(confirm("Are you sure you want to uncover the cards ??"))
-    {
+    
+     if(confirm("Are you sure you want to uncover the cards ??"))
+     {
+        
         isStartButtonClicked =true;
-    var tds = document.querySelectorAll("TD");
-    for(var k = 0;k<tds.length ;k++ )
+        unCoverAllImgs();
+        removeElement("seconds-counter");
+     }
+    
+}
+function unCoverAllImgs()
+{
+     var tds = document.querySelectorAll("TD");
+        for(var k = 0;k<tds.length ;k++ )
         {
             var img = tds[k].firstChild; // the image
             img.src = miniSources[img.id]
         }
-    }
+}
+function coverAllImgs()
+{
+     var tds = document.querySelectorAll("TD");
+        for(var k = 0;k<tds.length ;k++ )
+        {
+            var img = tds[k].firstChild; // the image
+            img.src ="cover.jpg";
+        }
     
 }
