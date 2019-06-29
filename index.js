@@ -204,6 +204,10 @@ function userQuit()
         isStartButtonClicked =true;
         unCoverAllImgs();
         removeElement("seconds-counter");
+         var btn =  document.getElementById("solveBtn");
+         btn.setAttribute("value","PlayAgain");
+         btn.setAttribute("onclick","reload()");
+         
      }
     
 }
@@ -225,4 +229,9 @@ function coverAllImgs()
             img.src ="cover.jpg";
         }
     
+}
+function reload()
+{
+    location.reload();
+
 }
