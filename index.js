@@ -81,7 +81,7 @@ function checkImg(element)
    
     if(click%2 == 0)
     {
-       console.log("click number "+click);        
+       //console.log("click number "+click);        
     }
     else
     {
@@ -91,7 +91,7 @@ function checkImg(element)
         for(var k = 0 ;k<alltds.length ;k++)
         {
             var image = alltds[k].firstChild;
-            console.log(element.src+"<<>>"+image.src) //not important just debugger helper 
+            //console.log(element.src+"<<>>"+image.src) //not important just debugger helper 
             
             if(element.src == image.src && image.id !=element.id)
             {
@@ -99,6 +99,7 @@ function checkImg(element)
                 flag = true;
                 image.dataset.matched = "true";
                 element.dataset.matched = "true";
+                checkEndOfTheGame();
             }
         }           
         if(flag == false){
@@ -151,13 +152,12 @@ function begin(element){
     unCoverAllImgs();
     setTimeout(function() {
     coverAllImgs();
-  }, 600);
+  }, 1);
     
-    
-    isStartButtonClicked = true;
-    
-var cancel = setInterval(incrementSeconds, 1000);
+    isStartButtonClicked = true;    
+    var cancel = setInterval(incrementSeconds, 1000);    
     removeElement(element.id);
+   // setTimeout(function(){coverAllImgs();},10);
     document.getElementById("solveBtn").style.display = "inline-block";
     
 }
@@ -203,10 +203,15 @@ function userQuit()
         
         isStartButtonClicked =true;
         unCoverAllImgs();
-        removeElement("seconds-counter");
+         //var text = document.getElementById("seconds-counter"); // remove
+         removeElement("seconds-counter");
          var btn =  document.getElementById("solveBtn");
          btn.setAttribute("value","PlayAgain");
          btn.setAttribute("onclick","reload()");
+         //remove
+         
+    
+        // alert(text.innerText);
          
      }
     
@@ -234,4 +239,23 @@ function reload()
 {
     location.reload();
 
+}
+function checkEndOfTheGame()
+{
+    var flag = 0;
+    var tds = document.querySelectorAll("TD");
+    for(var k = 0 ;k<tds.length;k++)
+    {
+        var img = tds[k].firstChild;
+        if(img.src.includes("cover.jpg"))
+          {  flag = 1; }
+    }
+    if(flag == 0){
+         var text = document.getElementById("seconds-counter");
+         alert("Congrats You Finished The game within"+text.innerText.substr(22));
+         removeElement("seconds-counter");
+         var btn =  document.getElementById("solveBtn");
+         btn.setAttribute("value","PlayAgain");
+         btn.setAttribute("onclick","reload()");
+        }
 }
