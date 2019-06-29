@@ -152,7 +152,7 @@ function begin(element){
     unCoverAllImgs();
     setTimeout(function() {
     coverAllImgs();
-  }, 1);
+  }, 600);
     
     isStartButtonClicked = true;    
     var cancel = setInterval(incrementSeconds, 1000);    
